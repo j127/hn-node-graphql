@@ -1,0 +1,19 @@
+"""
+Schemas are made up of Queries, Mutations, and Subscriptions.
+
+An exclamation point means that it can't be `null`.
+"""
+type Query {
+    info: String!
+    feed: [Link]!
+}
+
+type Mutation {
+    post(url: String!, description: String!): Link!
+}
+
+type Link {
+    id: ID!
+    description: String!
+    url: String!
+}
