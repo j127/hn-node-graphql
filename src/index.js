@@ -28,11 +28,6 @@ const resolvers = {
             return link;
         },
     },
-    Link: {
-        id: parent => parent.id,
-        description: parent => parent.description,
-        url: parent => parent.url,
-    },
 };
 
 // The server is passed the schema and resolvers.
