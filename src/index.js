@@ -1,6 +1,6 @@
 const { GraphQLServer } = require("graphql-yoga");
 
-const links = [
+let links = [
     {
         id: "link-0",
         url: "codeselfstudy.com",
@@ -8,7 +8,7 @@ const links = [
     },
 ];
 
-const idCount = links.length;
+let idCount = links.length;
 
 // The implementation is identical to the definition above.
 // Resolvers receive 4 arguments, but not all need to be used.
@@ -16,6 +16,7 @@ const resolvers = {
     Query: {
         info: () => `This is the API of an HN clone`,
         feed: () => links,
+        link: (_parent, args) => links.find(ln => ln.id === args.id),
     },
     Mutation: {
         post: (_parent, args) => {
@@ -26,6 +27,14 @@ const resolvers = {
             };
             links.push(link);
             return link;
+        },
+        updateLink: (_parent, args) => {
+            const idx = links.findIndex(ln => ln.id === args.id);
+            links[idx] = { ...links[idx], ...args };
+        },
+        deleteLink: (_parent, args) => {
+            const idx = links.findIndex(ln => ln.id === args.id);
+            links.splice(idx, 1);
         },
     },
 };
