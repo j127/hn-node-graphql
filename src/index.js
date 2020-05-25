@@ -30,7 +30,8 @@ const resolvers = {
         },
         updateLink: (_parent, args) => {
             const idx = links.findIndex(ln => ln.id === args.id);
-            links[idx] = { ...links[idx], ...args };
+            // don't allow changing the ID
+            links[idx] = { ...links[idx], ...args, id: links[idx].id };
         },
         deleteLink: (_parent, args) => {
             const idx = links.findIndex(ln => ln.id === args.id);
