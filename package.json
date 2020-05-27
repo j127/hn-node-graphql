@@ -13,6 +13,7 @@
         "graphql-yoga": "^1.18.3"
     },
     "devDependencies": {
-        "nodemon": "^2.0.4"
+        "nodemon": "^2.0.4",
+        "prisma": "^1.34.10"
     }
 }
